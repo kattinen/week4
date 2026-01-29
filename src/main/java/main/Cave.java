@@ -27,6 +27,7 @@ public class Cave {
             System.out.println("Luola on tyhjä.");
         }
         else {
+            System.out.println("Luolan hirviöt:");
             int i = 0;
             for(Monster monster : monsterList) {
                 i++;
