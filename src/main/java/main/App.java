@@ -21,7 +21,7 @@ public class App
         Player player = null;
         Cave cave = null;
 
-        System.out.print("Syötä pelaajan nimi: ");
+        System.out.println("Syötä pelaajan nimi: ");
         String playerName = sc.nextLine();
         player = new Player(playerName);
         cave = new Cave(player);
@@ -33,7 +33,7 @@ public class App
             System.out.println("3) Hyökkää hirviöön");
             System.out.println("4) Tallenna peli");
             System.out.println("5) Lataa peli");
-            System.out.println("0) Lopeta ohjelma");
+            System.out.println("0) Lopeta peli");
 
             if(sc.hasNext()) {
                 int i = 0;
@@ -42,9 +42,9 @@ public class App
             
                 switch(i) {
                     case 1:
-                        System.out.print("Anna hirviön tyyppi: ");
+                        System.out.println("Anna hirviön tyyppi: ");
                         String type = sc.nextLine();
-                        System.out.print("Anna hirviön elämän määrä numerona: ");
+                        System.out.println("Anna hirviön elämän määrä numerona: ");
                         int health = Integer.parseInt(sc.nextLine());
                         Monster monster = new Monster(type, health);
                         cave.addMonster(monster);

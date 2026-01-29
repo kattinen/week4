@@ -19,7 +19,12 @@ public class Player {
         int remainingHealth = monster.takeDamage(damage);
         String monsterName = monster.getType();
         System.out.println(name + " hyökkää " + monsterName + " hirviöön!");
-        System.out.println("Hirviöllä on " + remainingHealth + " elämää jäljellä.");
+        if (remainingHealth == 0) {
+            System.out.println(monsterName + " on kuollut!");
+        } 
+        else {
+            System.out.println("Hirviöllä on " + remainingHealth + " elämää jäljellä.");
+        }
         return remainingHealth;
     } 
  

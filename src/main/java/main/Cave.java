@@ -23,10 +23,15 @@ public class Cave {
     }
 
     public void listMonsters () {
-        int i = 0;
-        for(Monster monster : monsterList) {
-            i++;
-            monster.printInfo(i);
+        if (monsterList.size() == 0) {
+            System.out.println("Luola on tyhjä.");
+        }
+        else {
+            int i = 0;
+            for(Monster monster : monsterList) {
+                i++;
+                monster.printInfo(i);
+            }
         }
     }
 
