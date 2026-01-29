@@ -36,6 +36,19 @@ public class Cave {
         }
     }
 
+    public void chooseMonster () {
+        if (monsterList.size() == 0) {
+            System.out.println("Luola on tyhjä.");
+        }
+        else {
+            int i = 0;
+            for(Monster monster : monsterList) {
+                i++;
+                monster.printInfo(i);
+            }
+        }
+    }
+
     public Monster getMonster (int number) {
         return monsterList.get(number - 1);    
     }

@@ -54,7 +54,7 @@ public class App
                         break;
                     case 3:
                         System.out.println("Valitse hirviö, johon hyökätä: ");
-                        cave.listMonsters();
+                        cave.chooseMonster();
                         int number = Integer.parseInt(sc.nextLine());
                         Monster attackMonster = cave.getMonster(number);
                         int remainingHealth = player.attack(attackMonster);
