@@ -22,7 +22,7 @@ public class Cave implements Serializable {
     private String file;
 
     public Cave (Player player) {
-        //this.name = player;
+        this.name = player.getName();
         this.monsterList = new ArrayList<>();
     }
 
@@ -79,13 +79,18 @@ public class Cave implements Serializable {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void loadMonsterList(String savedFile) {
         this.file = savedFile;
         try {
             ObjectInputStream monsterReader = new ObjectInputStream(new FileInputStream(file));
             monsterList = (ArrayList<Monster>) monsterReader.readObject();
             monsterReader.close();
-            System.out.println("Peli ladattu tiedostosta " + file + ". Tervetuloa takaisin, PELAAJA.");           
+            name = getName();
+            System.out.println("Peli ladattu tiedostosta " + file + ". Tervetuloa takaisin, " + name + ".");           
             }
         catch (FileNotFoundException e) {
             System.out.println("Pelin lataaminen ei onnistunut.");

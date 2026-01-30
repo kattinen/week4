@@ -16,6 +16,10 @@ public class Player implements Serializable {
         this.name = name;
     }
 
+    public String getName () {
+        return name;
+    }
+
     public int attack(Monster monster) {
         int damage = 10;
         int remainingHealth = monster.takeDamage(damage);
