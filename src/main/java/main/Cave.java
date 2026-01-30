@@ -7,11 +7,19 @@
 
 package main;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cave {
+public class Cave implements Serializable {
     private String name;
     private ArrayList<Monster> monsterList;
+    private String file;
 
     public Cave (Player player) {
         //this.name = player;
@@ -57,5 +65,41 @@ public class Cave {
         monsterList.remove(monster);
     }
 
-    
+    public void saveMonsterList(String saveFile) {
+        this.file = saveFile;
+        try {
+            ObjectOutputStream monsterWriter = new ObjectOutputStream(new FileOutputStream(file));
+            monsterWriter.writeObject(monsterList);
+            monsterWriter.close();
+            System.out.println("Peli tallennettiin tiedostoon " + file + ".");
+        }
+        catch (IOException e) {
+            System.out.println("Pelin tallentaminen ei onnistunut.");
+            e.printStackTrace();
+        }
+    }
+
+    public void loadMonsterList(String savedFile) {
+        this.file = savedFile;
+        try {
+            ObjectInputStream monsterReader = new ObjectInputStream(new FileInputStream(file));
+            monsterList = (ArrayList<Monster>) monsterReader.readObject();
+            monsterReader.close();
+            System.out.println("Peli ladattu tiedostosta " + file + ". Tervetuloa takaisin, PELAAJA.");           
+            }
+        catch (FileNotFoundException e) {
+            System.out.println("Pelin lataaminen ei onnistunut.");
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            System.out.println("Pelin lataaminen ei onnistunut.");
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Pelin lataaminen ei onnistunut.");
+            e.printStackTrace();
+        }
+
+    } 
+ 
 }

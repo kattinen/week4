@@ -8,7 +8,9 @@
 
 package main;
 
-public class Monster {
+import java.io.Serializable;
+
+public class Monster implements Serializable {
     private String type;
     private int health;
 

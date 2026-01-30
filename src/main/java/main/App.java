@@ -63,10 +63,14 @@ public class App
                         }
                         break;
                     case 4:
-                        // Tallenna peli
+                        System.out.println("Anna tiedoston nimi, johon peli tallentaa:");
+                        String saveFile = sc.nextLine();
+                        cave.saveMonsterList(saveFile);
                         break;
                     case 5:
-                        // Lataa peli
+                        System.out.println("Anna tiedoston nimi, josta peli ladataan:");
+                        String savedFile = sc.nextLine();
+                        cave.loadMonsterList(savedFile);
                         break;
                     case 0:
                         System.out.println("Peli päättyy. Kiitos pelaamisesta!");
@@ -76,15 +80,7 @@ public class App
                         System.out.println("Virheellinen valinta, yritä uudelleen.");
                 }
             }
-
         }
-
-        // Kun käsittelet pelaajaa App.java:ssa, viittaa siihen luolaolion kautta,
-        // esimerkiksi cave.player.attack(monster))
-
-        // Peli pitää myös pystyä tallentamaan ja ladata, 
-        // joka onnistuu serialisoimalla tarvittavat luokat ja tallentamalla Cave luokan olio.
-
         sc.close();
     }
 }
